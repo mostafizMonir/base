@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetCoreRepositoryAndUnitOfWorkPattern.Data.Dapper;
 using NetCoreRepositoryAndUnitOfWorkPattern.Data.Models;
 using NetCoreRepositoryAndUnitOfWorkPattern.Data.Repositories;
 using NetCoreRepositoryAndUnitOfWorkPattern.Service.Services;
@@ -27,12 +28,17 @@ namespace NetCoreRepositoryAndUnitOfWorkPattern
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RepositoryPatternDemoContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));
+          //  services.AddDbContext<RepositoryPatternDemoContext>(options => options.UseNpgsql(Configuration["Database:ConnectionString"]));
 
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IProductRepository, ProductRepository>();
 
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICustomerService, CustomerService>();
+
+            services.AddTransient<IUserService, UserService>();
+
+            services.AddScoped<IDapper, Dapperr>();
 
             services.AddControllersWithViews();
         }

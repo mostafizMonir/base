@@ -9,6 +9,8 @@ namespace NetCoreRepositoryAndUnitOfWorkPattern.Data.Repositories
 
         Task<TEntity> AddAsync(TEntity entity);
 
+        TEntity Add(TEntity entity);
+
         Task<TEntity> UpdateAsync(TEntity entity);
     }
 }

@@ -17,6 +17,7 @@ namespace NetCoreRepositoryAndUnitOfWorkPattern.Data.Models
 
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,7 +25,7 @@ namespace NetCoreRepositoryAndUnitOfWorkPattern.Data.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>(entity =>
+            /*modelBuilder.Entity<Customer>(entity =>
             {
                 entity.Property(e => e.FirstName)
                     .IsRequired()
@@ -46,7 +47,7 @@ namespace NetCoreRepositoryAndUnitOfWorkPattern.Data.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
-            });
+            });*/
 
             OnModelCreatingPartial(modelBuilder);
         }

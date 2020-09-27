@@ -40,7 +40,26 @@ namespace NetCoreRepositoryAndUnitOfWorkPattern.Data.Repositories
 
                 return entity;
             }
-            catch (Exception)
+            catch (Exception ex)
+            {
+                throw new Exception($"{nameof(entity)} could not be saved");
+            }
+        }
+        public  TEntity Add(TEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
+            }
+
+            try
+            {
+                 _repositoryPatternDemoContextContext.Add(entity);
+                 _repositoryPatternDemoContextContext.SaveChanges();
+
+                return entity;
+            }
+            catch (Exception ex)
             {
                 throw new Exception($"{nameof(entity)} could not be saved");
             }

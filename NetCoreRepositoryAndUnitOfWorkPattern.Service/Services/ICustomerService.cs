@@ -9,5 +9,7 @@ namespace NetCoreRepositoryAndUnitOfWorkPattern.Service.Services
         List<Customer> GetAllCustomer();
         Task<Customer> GetCustomerById(int id);
         Task<Customer> AddCustomer(Customer newCustomer);
+        Customer Add(Customer newCustomer);
+        Task<Customer> UpdateCustomer(Customer newCustomer);
     }
 }

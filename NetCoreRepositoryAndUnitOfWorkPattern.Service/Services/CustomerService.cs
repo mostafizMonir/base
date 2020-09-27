@@ -30,5 +30,14 @@ namespace NetCoreRepositoryAndUnitOfWorkPattern.Service.Services
         {
             return await _customerRepository.AddAsync(newCustomer);
         }
+        public  Customer Add(Customer newCustomer)
+        {
+            return  _customerRepository.Add(newCustomer);
+        }
+
+        public async Task<Customer> UpdateCustomer(Customer newCustomer)
+        {
+           return await  _customerRepository.UpdateAsync(newCustomer);
+        }
     }
 }
